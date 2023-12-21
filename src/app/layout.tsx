@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-      <DirectoryProvider>
-        {children}
-      </DirectoryProvider>
-        </body>
+        <DirectoryProvider>
+          {children}
+        </DirectoryProvider>
+      </body>
     </html>
   )
 }

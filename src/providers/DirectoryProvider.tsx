@@ -8,11 +8,10 @@ type DirectoryProviderProps ={
 
 export function DirectoryProvider({children}:DirectoryProviderProps){
   const [files,setFiles] = useState<File[]>([])
-  const [folderName,setFolderName] = useState("")
+  const [folderName,setFolderName] = useState<string|null>(null)
 
   const handleFolderPick = async () => {
       try {
-          // Mostra um seletor de diretórios e espera o usuário escolher uma pasta
           
           const filesFromUser = []
           // @ts-ignore
@@ -25,18 +24,20 @@ export function DirectoryProvider({children}:DirectoryProviderProps){
             }
           }
           setFiles(filesFromUser)
-          // Itera sobre os arquivos na pasta escolhida
       } catch (e) {
           console.error(e);
       }
   };
+  function handleEraseFolder(){
+    setFiles([])
+    setFolderName(null)
+  }
 
 return(
   <div>
-    <DirectoryContext.Provider value={{files,handleFolderPick,folderName}} >
+    <DirectoryContext.Provider value={{files,handleFolderPick,folderName,handleEraseFolder}} >
       {children}
     </DirectoryContext.Provider>
-    
   </div>
 )  
   
