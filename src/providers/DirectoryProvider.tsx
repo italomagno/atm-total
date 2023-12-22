@@ -19,8 +19,10 @@ export function DirectoryProvider({children}:DirectoryProviderProps){
           setFolderName(await handler.name)
           for await(const file of handler.values()) {
             if(file.kind === "file") {
-              const data = await file.getFile();
+             
+                const data = await file.getFile();
               filesFromUser.push(data);
+          
             }
           }
           setFiles(filesFromUser)

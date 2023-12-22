@@ -9,6 +9,7 @@ import { Eye } from "@phosphor-icons/react"
 export function ShowFilesSection(){
     const folder = useDirectoryContext()
 
+
     return(
         <div className="container mx-auto">
         {
