@@ -1,21 +1,36 @@
-export async function handleFiles(selectedFile: File) {
-    const reader = new FileReader();
+import { newFileType } from "@/types";
 
-    reader.onload = function (event) {
-        //@ts-ignore
-        const text = event.target.result as string;
-        processCSV(text);
-    };
+export async function handleFiles(selectedFile: File): Promise<newFileType> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
 
-    reader.readAsText(selectedFile);
+        reader.onload = function (event) {
+            try {
+                //@ts-ignore
+                const text = event.target.result as string;
+                const result = processCSV(text);
+                resolve(result); // Resolve a Promise com o resultado
+            } catch (error) {
+                reject(error); // Rejeita a Promise em caso de erro
+            }
+        };
+
+        reader.onerror = function (error) {
+            reject(error); // Rejeita a Promise em caso de erro no FileReader
+        };
+
+        reader.readAsText(selectedFile);
+    });
 }
 
 function processCSV(text: string) {
     // Dividir o texto em linhas
     const lines = text.split('\n');
 
-
-    const result = [];
+    const result:newFileType = {
+        filesWithError:[],
+        filesWithoutError:[]
+    }
 
     // Obter os cabeçalhos
     let headers: {
@@ -37,7 +52,9 @@ function processCSV(text: string) {
         throw Error("pequitio azul"+JSON.stringify(headers,null,2))
     }
 
-    for (let i = headers.indice-1; i > 0; i--) {
+    const linesSliced = lines.slice(0,headers.indice)
+
+    for (let i = 0; i < linesSliced.length; i++) {
         const obj = {};
         let currentlineTest = lines[i]
         if (currentlineTest.length !== 0) {
@@ -46,12 +63,20 @@ function processCSV(text: string) {
                 //@ts-ignore
                 obj[headers.header[j]] = currentline[j];
             }
-            result.push(obj);
+
+                //@ts-ignore
+            const hasRepetition = result.filesWithoutError.find(row=>row["time"] === obj["time"])
+            if(hasRepetition){
+                result.filesWithError.push({ObjectWithError:obj,line:i})
+            }else{
+                result.filesWithoutError.push(obj);
+            }
         } else {
             throw Error("pequitio verde")
         }
     }
-    console.log(result)
 
-    // Exibir o resultado
+    return result
+
+
 }

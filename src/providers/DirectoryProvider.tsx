@@ -1,43 +1,75 @@
 "use client"
 import { DirectoryContext } from "@/contexts/useDirectoryContext"
+import { handleFiles } from "@/hooks/useCsv"
+import { folderType } from "@/types"
 import { ReactNode, useState } from "react"
 
 type DirectoryProviderProps ={
   children:ReactNode
 }
 
+
 export function DirectoryProvider({children}:DirectoryProviderProps){
-  const [files,setFiles] = useState<File[]>([])
-  const [folderName,setFolderName] = useState<string|null>(null)
+  const [folders,setFolders] = useState<folderType[]>([])
 
   const handleFolderPick = async () => {
       try {
-          
-          const filesFromUser = []
+        const folderObject:folderType =  {
+          folderName:"",
+          files:[]
+        }
           // @ts-ignore
           const handler = await window.showDirectoryPicker();
-          setFolderName(await handler.name)
-          for await(const file of handler.values()) {
-            if(file.kind === "file") {
-             
-                const data = await file.getFile();
-              filesFromUser.push(data);
-          
+          for await(const folder of handler.values()) {
+            
+
+            if(folder.kind === "directory"){
+              let folderObjectInsideDirectory:folderType =  {
+                folderName:folder.name,
+              files:[]
+              }
+          for await(const file of folder.values()) {
+              const parsedName = (file.name.split("_")) 
+              const isConfigAtPosition3 = parsedName[3] === "config.csv"
+              if(isConfigAtPosition3){
+                if(file.kind === "file") {
+                  const data = await file.getFile();
+                  const dataAnalyzed = await handleFiles(data)
+                  folderObjectInsideDirectory.files.push(dataAnalyzed);
+                }
+              }
+          }
+          setFolders(oldFolder => [...oldFolder, folderObjectInsideDirectory])
+            }else{
+              const file = folder
+              const folderName = await handler.name
+              folderObject.folderName = folderName
+              const parsedName = (file.name.split("_")) 
+              const isConfigAtPosition3 = parsedName[3] === "config.csv"
+              if(isConfigAtPosition3){
+                if(file.kind === "file") {
+                  const data = await file.getFile();
+                  const dataAnalyzed = await handleFiles(data)
+                  folderObject.files.push(dataAnalyzed);
+                }
+              }
+            }
+            const hasSetNameOnFolderObject = folderObject.folderName !== ""
+            if(hasSetNameOnFolderObject){
+            setFolders([...folders,folderObject])
             }
           }
-          setFiles(filesFromUser)
       } catch (e) {
           console.error(e);
       }
   };
   function handleEraseFolder(){
-    setFiles([])
-    setFolderName(null)
+    setFolders([])
   }
 
 return(
   <div>
-    <DirectoryContext.Provider value={{files,handleFolderPick,folderName,handleEraseFolder}} >
+    <DirectoryContext.Provider value={{folders,handleFolderPick,handleEraseFolder}} >
       {children}
     </DirectoryContext.Provider>
   </div>
