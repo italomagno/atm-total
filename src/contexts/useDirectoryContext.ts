@@ -2,6 +2,7 @@ import { folderType } from "@/types";
 import {  createContext, useContext } from "react";
 
 type TDirectoryContext={
+  folderName:string
   folders: folderType[],
   handleFolderPick:()=>void;
   handleEraseFolder:()=>void;

@@ -3,15 +3,21 @@ export type folderType = {
     files: newFileType[]
 }
 
-type ErrorFileType = {
+export type ErrorFileType = {
     ObjectWithError:{},
     line:number
 }
-type ErrorFileTypeObj = {}
+export type ErrorFileTypeObj = {}
 
-
+export type FileHeaderType = {
+    
+       header:string,
+        isChecked:boolean
+    
+}
 
 export type newFileType = {
+        name:string,
         filesWithError:ErrorFileType[],
         filesWithoutError:ErrorFileTypeObj[],
 }

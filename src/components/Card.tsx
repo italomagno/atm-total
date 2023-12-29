@@ -1,13 +1,13 @@
 
 import Image from "next/image";
 import Logo from "@/assets/logo-ATM-B-Barra-Menu-150x70-1.png"
-import { ButtonPicker } from "./shared/ButtonPicker";
+import { ReactNode } from "react";
 type CardProps = {
   title:string
-  type?:"input"
+  children?: ReactNode
 }
 
-export function Card({title,type}:CardProps){
+export function Card({title,children}:CardProps){
   
   return(
     <div className={`px-4 py-4 border shadow-sm rounded  border-gray-300 hover:border-gray-300 hover:border hover:-translate-y-2  transition-all duration-500 ease-in-out  items-center justify-center bg-backgroudBlue-100`
@@ -18,7 +18,7 @@ export function Card({title,type}:CardProps){
             <Image
             src={Logo}
             fill={false}
-            alt="Logo Upleaure"
+            alt="Logo ATM"
             width={36}
             height={36}
             />
@@ -31,11 +31,11 @@ export function Card({title,type}:CardProps){
         <div>
           <div className="mt-3">
             <h1 className="text-1xl font-serif font-bold text-gray-300">
-              {type? "":title}
+              {title}
             </h1>
             </div>
             <div className="mt-3">
-            <ButtonPicker/>
+            {children}
             </div>
           
           </div>

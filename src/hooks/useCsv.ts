@@ -1,4 +1,4 @@
-import { newFileType } from "@/types";
+import { folderType, newFileType } from "@/types";
 
 export async function handleFiles(selectedFile: File): Promise<newFileType> {
     return new Promise((resolve, reject) => {
@@ -28,8 +28,9 @@ function processCSV(text: string) {
     const lines = text.split('\n');
 
     const result:newFileType = {
-        filesWithError:[],
-        filesWithoutError:[]
+        filesWithError: [],
+        filesWithoutError: [],
+        name: ""
     }
 
     // Obter os cabeçalhos
@@ -77,6 +78,24 @@ function processCSV(text: string) {
     }
 
     return result
-
-
 }
+
+export async function exportCsv({folder,headers}:{folder:any,headers:string[]}) {
+
+    let csvContent = [];
+        const headersJoined = headers.join(';');
+        csvContent.push(headersJoined);
+    folder.forEach((file:any) => {
+        file.filesWithoutError.forEach((row:any)=>{
+            let rowData = (headers.map(h=>row[h])).join(';');
+           /*   = Object.values(row) */
+            csvContent.push(rowData);
+        })
+    });
+
+    let csvString = csvContent.join('\n');
+
+    let blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+
+    return  URL.createObjectURL(blob);
+} 
