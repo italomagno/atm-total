@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import { DirectoryProvider } from '@/providers/DirectoryProvider'
@@ -22,6 +23,7 @@ export default function RootLayout({
         <ModalProvider>
         <DirectoryProvider>
           {children}
+          <Analytics />
         </DirectoryProvider>
         </ModalProvider>
       </body>
