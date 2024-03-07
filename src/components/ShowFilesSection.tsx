@@ -4,7 +4,8 @@ import { useModalContext } from "@/contexts/useModalContext"
 import { CardSection } from "./CardSections"
 import { Header } from "./shared/Header"
 import { ShowFilesSection } from "./ShowFilesComponent"
-import { Modal } from "./shared/Modal"
+import { DownloadCsvTogetherModal } from "./Modal/DownloadCsvTogetherModal"
+import { ActionSection } from "./ActionSection"
 
 
 
@@ -16,12 +17,14 @@ export function MainComponent(){
     <main className=" bg-backgroudWhite-100 min-h-screen">
     <Header />
     <CardSection/>
+    <ActionSection/>
     <ShowFilesSection />
-    
     {
-      isOpen?
-      <Modal />
-      :null 
+      isOpen
+      ?
+      <DownloadCsvTogetherModal />
+      :
+      null 
     }
 
   </main>

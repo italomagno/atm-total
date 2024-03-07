@@ -1,5 +1,4 @@
 
-import { useDirectoryContext } from "@/contexts/useDirectoryContext";
 import { Card } from "./Card";
 import { ButtonPicker } from "./shared/ButtonPicker";
 
@@ -14,6 +13,7 @@ export function CardSection(){
       title="Selecione a pasta dos dados SOT"
       children={<ButtonPicker/>}
       />
+      
       
     </section>
   )

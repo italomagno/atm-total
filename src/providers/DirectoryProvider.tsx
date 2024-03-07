@@ -34,6 +34,8 @@ export function DirectoryProvider({ children }: DirectoryProviderProps) {
             const isConfigAtPosition3 = parsedName[3] === "config.csv"
             if (isConfigAtPosition3) {
               if (file.kind === "file") {
+                const isHtml = file.name.includes(".html")
+                
                 const data = await file.getFile();
                 const dataAnalyzedWithoutName = await handleFiles(data)
                 const dataAnalyzed = {
