@@ -14,7 +14,7 @@ export function MainComponent(){
 
 
   return(
-    <main className=" bg-backgroudWhite-100 min-h-screen">
+    <main className=" min-h-screen">
     <Header />
     <CardSection/>
     <ActionSection/>

@@ -22,3 +22,10 @@ export type newFileType = {
         filesWithoutError:ErrorFileTypeObj[],
 }
 
+export type NavItemsProps = {
+    category:string,
+    links:{name:string,
+        href:string
+    }[]
+}
+

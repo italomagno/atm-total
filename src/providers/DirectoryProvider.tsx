@@ -3,6 +3,7 @@ import { DirectoryContext } from "@/contexts/useDirectoryContext"
 import { handleFiles } from "@/hooks/useCsv"
 import { folderType } from "@/types"
 import { ReactNode, useState } from "react"
+import { toast } from "react-toastify"
 
 type DirectoryProviderProps = {
   children: ReactNode
@@ -67,6 +68,13 @@ export function DirectoryProvider({ children }: DirectoryProviderProps) {
         }
       }
     } catch (e) {
+      const error = e
+      if(String(error).includes("AbortError")){
+        toast.error("Nenhuma pasta selecionada.",{position: "bottom-center"})
+      }else{
+      toast.error("Eita, esse navegador não é suportado. Tente utilizar outro.",{position: "bottom-center"})
+
+      }
       console.error(e);
     }
   };
