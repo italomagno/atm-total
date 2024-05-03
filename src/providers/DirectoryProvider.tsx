@@ -89,7 +89,5 @@ export function DirectoryProvider({ children }: DirectoryProviderProps) {
       </DirectoryContext.Provider>
     </div>
   )
-
-
 }
 

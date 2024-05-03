@@ -2,20 +2,19 @@
 
 import { useModalContext } from "@/contexts/useModalContext"
 import { CardSection } from "../CardSections"
-import { Header } from "../shared/Header"
 import { ShowFilesSection } from "../ShowFilesComponent"
 import { DownloadCsvTogetherModal } from "../Modal/DownloadCsvTogetherModal"
 import { ActionSection } from "../ActionSection"
+import { Layout } from "../shared/Layout"
 
 
 
 export function ErrorsComponent(){
   const {isOpen} = useModalContext()
 
-
   return(
-    <main className=" min-h-screen">
-    <Header />
+    <Layout>
+
     <CardSection/>
     <ActionSection/>
     <ShowFilesSection />
@@ -27,6 +26,6 @@ export function ErrorsComponent(){
       null 
     }
 
-  </main>
+</Layout>
   )
 }

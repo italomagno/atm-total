@@ -18,7 +18,7 @@ export const asideMenu:NavItemsProps[] = [
         category: "Sobre",
         links:[
             {
-                href:"/",
+                href:"/about",
                 name:"Sobre o ATM-Total"
             }
         ]
