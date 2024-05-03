@@ -2,36 +2,12 @@ import { NavItemsProps } from "@/types";
 import { List, X } from "@phosphor-icons/react";
 import { useState } from "react";
 import { NavItems } from "./NavItems";
-
+import { asideMenu } from "@/constants";
 
 export function MenuButton(){
 
-    const [isOpen,setIsOpen] = useState(true)
-    const navItems:NavItemsProps[] = [
-        {
-            category: "Principal",
-            links:[
-                {
-                    href:"/",
-                    name:"Home",
-                },
-                {
-                    href:"/errorsSot",
-                    name:"Análise de Erros"
-                }
-            ]
-        },
-        {
-            category: "Sobre",
-            links:[
-                {
-                    href:"/",
-                    name:"Sobre o ATM-Total"
-                }
-            ]
-        },
-
-    ]
+    const [isOpen,setIsOpen] = useState(false)
+  
     return(
         <>
         <button onClick={()=>setIsOpen(!isOpen)}className="text-backgroudBlue-100"><List size={32} weight="bold" /></button>
@@ -45,7 +21,7 @@ export function MenuButton(){
             <nav 
             className=" flex w-3/4 flex-col overflow-y-auto bg-gray-700  sm:max-w-xs lg:w-80">
             {
-                navItems.map((navItem,i)=>(
+                asideMenu.map((navItem,i)=>(
                     <NavItems
                     key={i} 
                     {...navItem}

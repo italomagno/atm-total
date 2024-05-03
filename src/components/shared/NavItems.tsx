@@ -9,6 +9,7 @@ export function NavItems({category,links}:NavItemsProps){
             {category}
         </h3>
         <ul  className="mb-8 text-sm font-medium">
+
         {
             links.map(link=>(
             <li key={link.name}>
@@ -19,6 +20,7 @@ export function NavItems({category,links}:NavItemsProps){
             </li>
             ))
         }
+
         </ul>
     </div>
     )

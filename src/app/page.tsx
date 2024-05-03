@@ -1,4 +1,4 @@
-import { MainComponent } from "@/components/ShowFilesSection";
+import { MainComponent } from "@/components/pagesComponents/MainComponent";
 
 
 export default function Home() {

@@ -5,6 +5,7 @@ import { useWindowScroll } from "@uidotdev/usehooks";
 
 import Image from "next/image";
 import { MenuButton } from "./MenuButton";
+import Link from "next/link";
 
 
 export function Header(){
@@ -14,6 +15,8 @@ export function Header(){
     <header className={`fixed top-0  z-[1] left-0 w-full  h-28 ${y && y>0 ?  "bg-white" :""} transition-all px-6 py-8 border-b-1  
      flex justify-between items-center`}>
       <div>
+        <Link
+        href={"/"}>
         <Image
         src={Logo}
         alt="Logo"
@@ -22,6 +25,7 @@ export function Header(){
         width={120}
         height={45}
         />
+        </Link>
       </div>
       <MenuButton/>
     </header>

@@ -72,8 +72,7 @@ export function DirectoryProvider({ children }: DirectoryProviderProps) {
       if(String(error).includes("AbortError")){
         toast.error("Nenhuma pasta selecionada.",{position: "bottom-center"})
       }else{
-      toast.error("Eita, esse navegador não é suportado. Tente utilizar outro.",{position: "bottom-center"})
-
+      toast.error("Esse navegador não é suportado. Tente utilizar o Google Chrome.",{position: "bottom-center"})
       }
       console.error(e);
     }
