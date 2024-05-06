@@ -24,8 +24,12 @@ export type newFileType = {
 
 export type NavItemsProps = {
     category:string,
+    bgCategory?:string,
+    textColor?:string,
+    bgHover?:string,
     links:{name:string,
-        href:string
+        href:string,
+    isActive?:boolean
     }[]
 }
 
