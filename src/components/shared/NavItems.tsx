@@ -1,7 +1,7 @@
 import { NavItemsProps } from "@/types"
 import Link from "next/link"
 
-export function NavItems({category,links,bgCategory="bg-gray-700",textColor="text-gray-50",bgHover="bg-gray-600"}:NavItemsProps){
+export function NavItems({category,links,bgCategory="bg-gray-700",textColor="text-gray-50"}:NavItemsProps){
     
     return(
         <div className="px-4 pb-6">
@@ -13,7 +13,7 @@ export function NavItems({category,links,bgCategory="bg-gray-700",textColor="tex
         {
             links.map(link=>(
             <li key={link.name}>
-                <Link className={`active flex items-center rounded py-3 pl-3 pr-4 ${textColor} hover:${bgHover}`}
+                <Link className={`active flex items-center rounded py-3 pl-3 pr-4 ${textColor} ${link.isActive && "bg-gray-600"} hover:bg-gray-600`}
                     href={link.href}>
                     <span className="select-none">{link.name}</span>
                 </Link>

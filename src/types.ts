@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export type folderType = {
     folderName:string,
     files: newFileType[]
@@ -29,7 +31,8 @@ export type NavItemsProps = {
     bgHover?:string,
     links:{name:string,
         href:string,
-    isActive?:boolean
+    isActive?:boolean,
+    node?: ReactNode
     }[]
 }
 

@@ -26,25 +26,5 @@ export const asideMenu:NavItemsProps[] = [
 
 ]
 
-export const asideAboutMenu:NavItemsProps[] = [
-    {
-        category: "",
-        links:[
-            {
-                href:"/",
-                name:"Retornar Para Página Inicial",
-            },
-            {
-                href:"/about",
-                name:"Sobre"
-            },
-            {
-                href:"/about/integrantes",
-                name:"Integrantes"
-            }
-        ]
-    },
-    
 
-]
 
