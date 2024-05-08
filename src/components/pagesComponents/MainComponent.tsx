@@ -8,7 +8,8 @@ export function MainComponent(){
     <Layout>
       <div className=" w-full flex items-center justify-center col-span-2">
                 <div className="w-[700px] h-[440px]  rounded-r-md shadow-md p-6">
-                  <h1 className="text-3xl font-black text-gray-50">
+                 <div className="mx-auto w-fit">
+                 <h1 className="text-3xl font-black text-gray-50">
                   Bem vindo |  ATM total Recife
                   </h1>
                   <br/>
@@ -20,6 +21,7 @@ export function MainComponent(){
                     Conheça sobre o projeto
                   </Link>
 
+                 </div>
                 </div>
       </div>
     </Layout>

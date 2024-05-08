@@ -1,7 +1,7 @@
 import { NavItemsProps } from "@/types"
 import Link from "next/link"
 
-export function NavItems({category,links,bgCategory="bg-gray-700",textColor="text-gray-50"}:NavItemsProps){
+export function NavItems({category,links,bgCategory="text-gray-500",textColor="text-gray-50"}:NavItemsProps){
     
     return(
         <div className="px-4 pb-6">

@@ -1,10 +1,10 @@
 "use client"
 import { Layout } from "../shared/Layout";
-import { NavMenu } from "../shared/NavMenu";
 import { Carrousel } from "../shared/Carrousel";
 import { NavItemsProps } from "@/types";
 import { useState } from "react";
 import { CardProfile } from "../shared/CardProfile";
+import { SharedBody } from "./shared/SharedBody";
 
 
 
@@ -18,7 +18,7 @@ export function AboutComponent(){
                 {
                     href:"/about",
                     name:"Sobre",
-                    isActive:false,
+                    isActive:true,
 
                     node:<>
                     <p className="ml-3 text-sm font-bold mb-2 text-justify">
@@ -69,23 +69,14 @@ export function AboutComponent(){
 
     return(
         <Layout>
-            <div className=" w-full flex items-center justify-center col-span-2">
-                <div className="w-fit bg-white rounded-l-lg p-6 bg-opacity-70 h-full">
-                <NavMenu
-                bgColor="bg-opacity-70"
-                textColor="text-black"
-                title="ATM Total | Recife"
-                //@ts-ignore
-                asideMenu={[nav]}
-                />
-                </div>
-                    <div className="w-[700px] h-[440px] bg-white bg-opacity-70  rounded-r-md shadow-md p-6">
-                            <Carrousel
-                    slides={nav.links.map(link=>link.node)}
-                    selectSlide={handleSelectedSlide}
-                    />    
-                </div>
-            </div>
+            <SharedBody
+            asideMenu={[nav]}
+            >
+            <Carrousel
+            slides={nav.links.map(link=>link.node)}
+                selectSlide={handleSelectedSlide}
+            /> 
+            </SharedBody>
         </Layout>
     )
 }
