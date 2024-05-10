@@ -13,12 +13,11 @@ import { NavItemsProps } from "@/types"
 
 export function ErrorsComponent(){
   const {isOpen} = useModalContext()
-  //const {} = useNavMenuManagment()
   const navMenu:NavItemsProps[] = [{
     category:"Procurar Erros no SOT",
     links:[
       {href:"",
-      name:"Arquivo Flights",
+      name:"Seleção de arquivos",
       isActive:true
       }
     ]

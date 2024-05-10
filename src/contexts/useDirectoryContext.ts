@@ -4,8 +4,9 @@ import {  createContext, useContext } from "react";
 type TDirectoryContext={
   folderName:string
   folders: folderType[],
-  handleFolderPick:()=>void;
+  handleFolderPick:(fileEndingName:string)=>void;
   handleEraseFolder:()=>void;
+  selectedFileType:string
 }
   export const DirectoryContext = createContext<TDirectoryContext|null>(null)
   export function useDirectoryContext(){

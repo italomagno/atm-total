@@ -7,7 +7,7 @@ type NavMenuProps={
     bgColor?:string
     bgCategory?:string
     bgHover?:string
-    textColor?:string
+    textColor?:string,
 }
 
 export function NavMenu({asideMenu,title,bgColor="bg-gray-700",bgCategory,bgHover,textColor}:NavMenuProps){
@@ -25,8 +25,7 @@ export function NavMenu({asideMenu,title,bgColor="bg-gray-700",bgCategory,bgHove
                         bgHover={bgHover}
                         textColor={textColor}
                         key={i}
-                        {...navItem} />
-
+                        {...navItem}/>
                 ))}
             </nav>
             </>

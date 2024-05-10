@@ -7,7 +7,6 @@ export async function handleHtmlFile(selectedFile: File): Promise<string[]> {
                 //@ts-ignore
                 const htmlContent = event.target.result as string;
                 const result = processHTML(htmlContent);
-                console.log(result)
                 resolve(result); // Resolve a Promise com o resultado
             } catch (error) {
                 reject(error); // Rejeita a Promise em caso de erro

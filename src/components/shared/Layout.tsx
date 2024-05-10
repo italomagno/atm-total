@@ -12,7 +12,7 @@ type LayoutProps = {
 
 export function Layout({children}:LayoutProps){
     return(
-        <main className=" min-h-screen">
+    <main className=" min-h-screen">
     <Header />
     <section className="pt-56 w-dvh relative grid grid-cols-1 p-4 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-2">
       <Image 

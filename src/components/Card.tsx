@@ -10,7 +10,7 @@ type CardProps = {
 export function Card({title,children}:CardProps){
   
   return(
-    <div className={`px-4 py-4 border shadow-sm rounded  border-gray-300 hover:border-gray-300 hover:border hover:-translate-y-2  transition-all duration-500 ease-in-out  items-center justify-center bg-backgroudBlue-100`
+    <div className={`px-4 py-4 border shadow-sm rounded  border-gray-300 hover:border-gray-300 hover:border hover:-translate-y-2  transition-all duration-500 ease-in-out  items-center justify-center bg-gray-700`
   }
     >
       <div className="relative">

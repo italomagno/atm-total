@@ -10,7 +10,7 @@ export function MenuButton(){
   
     return(
         <>
-        <button onClick={()=>setIsOpen(!isOpen)}className="text-backgroudBlue-100"><List size={32} weight="bold" /></button>
+        <button onClick={()=>setIsOpen(!isOpen)}className="text-gray-700 hover:text-gray-900"><List size={38} weight="bold" /></button>
         <aside onClick={(e)=>e.stopPropagation()} className={`fixed left z-40 top-0 right-0 ${isOpen? " w-80 visible":"w-0 invisible"} bg-gray-700  h-dvh p-4 opacity-100 transition-all transition-duration-1000`}>
             <div className="p-4 flex justify-between w-full text-gray-50 ">
             <div><p>Atm Total - Recife</p></div>

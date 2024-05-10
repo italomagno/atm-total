@@ -13,8 +13,10 @@ type DirectoryProviderProps = {
 export function DirectoryProvider({ children }: DirectoryProviderProps) {
   const [folders, setFolders] = useState<folderType[]>([])
   const [mainFolderName,setMainFolderName] = useState("")
+  const [selectedFileType,setSelectedFileType] = useState("")
 
-  const handleFolderPick = async () => {
+  const handleFolderPick = async (fileEndingName:string) => {
+    setSelectedFileType(fileEndingName)
     try {
       const folderObject: folderType = {
         folderName: "",
@@ -32,7 +34,7 @@ export function DirectoryProvider({ children }: DirectoryProviderProps) {
           }
           for await (const file of folder.values()) {
             const parsedName = (file.name.split("_"))
-            const isConfigAtPosition3 = parsedName[3] === "config.csv"
+            const isConfigAtPosition3 = parsedName[3].includes(fileEndingName)
             if (isConfigAtPosition3) {
               if (file.kind === "file") {
                 const isHtml = file.name.includes(".html")
@@ -84,7 +86,7 @@ export function DirectoryProvider({ children }: DirectoryProviderProps) {
 
   return (
     <div>
-      <DirectoryContext.Provider value={{ folders, handleFolderPick, handleEraseFolder,folderName:mainFolderName }} >
+      <DirectoryContext.Provider value={{selectedFileType, folders, handleFolderPick, handleEraseFolder,folderName:mainFolderName }} >
         {children}
       </DirectoryContext.Provider>
     </div>
