@@ -16,7 +16,7 @@ export function MainComponent(){
                   <br/>
                   <Link
                   href={"/about"}
-                  className="mx-auto text-center hover:opacity-50 text-3xl font-black text-gray-50 p-4 bg-backgroudBlue-100 rounded-md shadow-md"
+                  className="mx-auto text-center hover:opacity-50 text-3xl font-black text-gray-50 p-4 bg-gray-700 rounded-md shadow-md"
                   >
                     Conheça sobre o projeto
                   </Link>

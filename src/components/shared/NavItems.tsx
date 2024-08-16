@@ -11,7 +11,7 @@ export function NavItems({category,links,bgCategory="text-gray-500",textColor="t
         <h3 className={`mb-2 text-xs font-medium uppercase ${bgCategory}`}>
             {category}
         </h3>
-        <ul  className="mb-8 text-sm font-medium">
+        <ul  className=" flex flex-col  text-sm font-medium gap-2">
 
         {
             links.map((link,i)=>(

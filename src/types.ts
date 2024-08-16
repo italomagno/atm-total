@@ -12,10 +12,8 @@ export type ErrorFileType = {
 export type ErrorFileTypeObj = {}
 
 export type FileHeaderType = {
-    
        header:string,
         isChecked:boolean
-    
 }
 
 export type newFileType = {

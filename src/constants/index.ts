@@ -11,6 +11,10 @@ export const asideMenu:NavItemsProps[] = [
             {
                 href:"/errorsSot",
                 name:"Análise de Erros"
+            },
+            {
+                href:"/predictionsSot",
+                name:"Previsões"
             }
         ]
     },

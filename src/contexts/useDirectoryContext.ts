@@ -6,6 +6,7 @@ type TDirectoryContext={
   folders: folderType[],
   handleFolderPick:(fileEndingName:string)=>void;
   handleEraseFolder:()=>void;
+  handleCheckFolder:()=>void;
   selectedFileType:string
 }
   export const DirectoryContext = createContext<TDirectoryContext|null>(null)

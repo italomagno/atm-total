@@ -5,7 +5,7 @@ import { ButtonHTMLAttributes } from "react";
 
 
 type ButtonPickerProps = {
-  fileName:string
+  fileName?:string
   disabled:boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
@@ -35,7 +35,7 @@ export function ButtonPicker({fileName,disabled,...rest}:ButtonPickerProps) {
       </div>
       </>
       :
-      <button {...rest} onClick={()=>folder?.handleFolderPick(fileName)} disabled={disabled} className={`gap-2 w-full bg-white rounded-lg px-2 py-2 ${disabled && "cursor-not-allowed bg-red-300"}`}>
+      <button {...rest} onClick={()=>{fileName? folder?.handleFolderPick(fileName): folder?.handleCheckFolder()}} disabled={disabled} className={`gap-2 w-full bg-white rounded-lg px-2 py-2 ${disabled && "cursor-not-allowed bg-red-300"}`}>
         <div> {!disabled? "Escolher Pasta": "Não Disponível"}</div>
       </button>
       
