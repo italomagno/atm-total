@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react';
-import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import { DirectoryProvider } from '@/providers/DirectoryProvider'
 import { ModalProvider } from '@/providers/ModalProvider'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ATM-TOTAL DATA',
@@ -21,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body >
         <ModalProvider>
         <DirectoryProvider>
         <ToastContainer/>
