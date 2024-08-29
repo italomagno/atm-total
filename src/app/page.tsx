@@ -10,6 +10,7 @@ import {
 import { Progress } from "@/components/ui/progress"
 import { TableOfDataComponent } from "./csvConfig/TableOfDataComponent"
 import { UploadFileCard } from "./UploadFileCard"
+import { ShowFilesSection } from "@/components/ShowFilesComponent"
 
 export default function Dashboard() {
   return (
@@ -46,7 +47,8 @@ export default function Dashboard() {
                 </CardFooter>
               </Card>
             </div>
-            <TableOfDataComponent/>
+            <ShowFilesSection />    
+            {/* <TableOfDataComponent/> */}
           </div>
           <div>
 

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ButtonPicker } from "@/components/ui/ButtonPicker";
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { UploadIcon } from "lucide-react";
 
@@ -16,12 +17,7 @@ export function UploadFileCard(){
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <Button className="flex justify-center gap-2 align-middle">
-           <UploadIcon/> 
-           <p className="block">
-           Selecionar pasta
-           </p>
-          </Button>
+        <ButtonPicker disabled={false}/>
         </CardFooter>
       </Card>
     )

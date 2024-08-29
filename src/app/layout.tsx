@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { HeaderComponent } from "./HeaderComponent";
 import { AsideComponent } from "./AsideComponent";
+import { Toaster } from "@/components/ui/toaster";
+import { DirectoryProvider } from "@/providers/FolderProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,10 @@ export default function RootLayout({
         <AsideComponent />
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
       <HeaderComponent/>
+      <DirectoryProvider>
       {children}
+      <Toaster />
+      </DirectoryProvider>
       </div>
 
 
